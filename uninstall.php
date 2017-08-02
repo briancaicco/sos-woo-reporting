@@ -19,10 +19,10 @@
  * For more information, see the following discussion:
  * https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate/pull/123#issuecomment-28541913
  *
- * @link       briancaicco.com
+ * @link       This plugin pulls custom transaction data from the woocommerce plugin
  * @since      1.0.0
  *
- * @package    Sos_Woo_Quick
+ * @package    Sos_Woo_Reporting
  */
 
 // If uninstall not called from WordPress, then exit.

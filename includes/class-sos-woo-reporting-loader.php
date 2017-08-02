@@ -3,11 +3,11 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link       briancaicco.com
+ * @link       This plugin pulls custom transaction data from the woocommerce plugin
  * @since      1.0.0
  *
- * @package    Sos_Woo_Quick
- * @subpackage Sos_Woo_Quick/includes
+ * @package    Sos_Woo_Reporting
+ * @subpackage Sos_Woo_Reporting/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Sos_Woo_Quick
- * @subpackage Sos_Woo_Quick/includes
+ * @package    Sos_Woo_Reporting
+ * @subpackage Sos_Woo_Reporting/includes
  * @author     SOS Development Team <briancaicco@gmail.com>
  */
-class Sos_Woo_Quick_Loader {
+class Sos_Woo_Reporting_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

@@ -6,11 +6,11 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       briancaicco.com
+ * @link       This plugin pulls custom transaction data from the woocommerce plugin
  * @since      1.0.0
  *
- * @package    Sos_Woo_Quick
- * @subpackage Sos_Woo_Quick/includes
+ * @package    Sos_Woo_Reporting
+ * @subpackage Sos_Woo_Reporting/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Sos_Woo_Quick
- * @subpackage Sos_Woo_Quick/includes
+ * @package    Sos_Woo_Reporting
+ * @subpackage Sos_Woo_Reporting/includes
  * @author     SOS Development Team <briancaicco@gmail.com>
  */
-class Sos_Woo_Quick {
+class Sos_Woo_Reporting {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class Sos_Woo_Quick {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Sos_Woo_Quick_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Sos_Woo_Reporting_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -68,7 +68,7 @@ class Sos_Woo_Quick {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'sos-woo-quick';
+		$this->plugin_name = 'sos-woo-reporting';
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
@@ -83,10 +83,10 @@ class Sos_Woo_Quick {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Sos_Woo_Quick_Loader. Orchestrates the hooks of the plugin.
-	 * - Sos_Woo_Quick_i18n. Defines internationalization functionality.
-	 * - Sos_Woo_Quick_Admin. Defines all hooks for the admin area.
-	 * - Sos_Woo_Quick_Public. Defines all hooks for the public side of the site.
+	 * - Sos_Woo_Reporting_Loader. Orchestrates the hooks of the plugin.
+	 * - Sos_Woo_Reporting_i18n. Defines internationalization functionality.
+	 * - Sos_Woo_Reporting_Admin. Defines all hooks for the admin area.
+	 * - Sos_Woo_Reporting_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -97,53 +97,36 @@ class Sos_Woo_Quick {
 	private function load_dependencies() {
 
 		/**
-		 * The loading of vendor SDK's via composer
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . '/vendor/autoload.php';
-
-		use Automattic\WooCommerce\Client;
-
-		$woocommerce = new Client(
-		    'http://localhost/', 
-		    'ck_97242eb1e38ae4e849ae9ccf2340f6aefc74bc6b', 
-		    'cs_2eafda10ab696fe937ec54ab1baf7317436e0152',
-		    [
-		        'wp_api' => true,
-		        'version' => 'wc/v1',
-		    ]
-		);
-
-		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-sos-woo-quick-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-sos-woo-reporting-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-sos-woo-quick-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-sos-woo-reporting-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-sos-woo-quick-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-sos-woo-reporting-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-sos-woo-quick-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-sos-woo-reporting-public.php';
 
-		$this->loader = new Sos_Woo_Quick_Loader();
+		$this->loader = new Sos_Woo_Reporting_Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Sos_Woo_Quick_i18n class in order to set the domain and to register the hook
+	 * Uses the Sos_Woo_Reporting_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -151,7 +134,7 @@ class Sos_Woo_Quick {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Sos_Woo_Quick_i18n();
+		$plugin_i18n = new Sos_Woo_Reporting_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -166,7 +149,7 @@ class Sos_Woo_Quick {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Sos_Woo_Quick_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Sos_Woo_Reporting_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -182,7 +165,7 @@ class Sos_Woo_Quick {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Sos_Woo_Quick_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Sos_Woo_Reporting_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -213,7 +196,7 @@ class Sos_Woo_Quick {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Sos_Woo_Quick_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Sos_Woo_Reporting_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

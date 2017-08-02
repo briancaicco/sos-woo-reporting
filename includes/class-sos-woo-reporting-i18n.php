@@ -6,11 +6,11 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       briancaicco.com
+ * @link       This plugin pulls custom transaction data from the woocommerce plugin
  * @since      1.0.0
  *
- * @package    Sos_Woo_Quick
- * @subpackage Sos_Woo_Quick/includes
+ * @package    Sos_Woo_Reporting
+ * @subpackage Sos_Woo_Reporting/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Sos_Woo_Quick
- * @subpackage Sos_Woo_Quick/includes
+ * @package    Sos_Woo_Reporting
+ * @subpackage Sos_Woo_Reporting/includes
  * @author     SOS Development Team <briancaicco@gmail.com>
  */
-class Sos_Woo_Quick_i18n {
+class Sos_Woo_Reporting_i18n {
 
 
 	/**
@@ -35,7 +35,7 @@ class Sos_Woo_Quick_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'sos-woo-quick',
+			'sos-woo-reporting',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

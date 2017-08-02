@@ -5,11 +5,11 @@
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       briancaicco.com
+ * @link       This plugin pulls custom transaction data from the woocommerce plugin
  * @since      1.0.0
  *
- * @package    Sos_Woo_Quick
- * @subpackage Sos_Woo_Quick/public/partials
+ * @package    Sos_Woo_Reporting
+ * @subpackage Sos_Woo_Reporting/public/partials
  */
 ?>
 
